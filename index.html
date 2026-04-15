@@ -10,7 +10,7 @@
       --bg: #ffffff; --bg-2: #f7f7f5; --bg-3: #f0ede8;
       --text: #1a1a1a; --text-2: #6b6b6b; --text-3: #9b9b9b;
       --border: rgba(0,0,0,0.12); --border-md: rgba(0,0,0,0.22);
-      --r-sm: 6px; --r-md: 8px; --r-lg: 12px;
+      --r-md: 8px; --r-lg: 12px;
       --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       --mono: 'SF Mono', 'Fira Code', monospace;
     }
@@ -23,90 +23,82 @@
     }
     body { font-family: var(--font); background: var(--bg-3); color: var(--text); min-height: 100vh; }
     .app { max-width: 1100px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
-
-    /* Topbar */
     .topbar { display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-bottom: 1.75rem; }
     .topbar h1 { font-size: 20px; font-weight: 600; }
-    .topbar p  { font-size: 13px; color: var(--text-2); margin-top: 2px; }
+    .topbar p { font-size: 13px; color: var(--text-2); margin-top: 2px; }
     .btn-group { display: flex; gap: 8px; flex-wrap: wrap; }
-
-    /* Buttons */
     .btn { padding: 8px 16px; border-radius: var(--r-md); border: 0.5px solid var(--border-md); background: var(--bg); color: var(--text); font-size: 13px; cursor: pointer; font-family: var(--font); transition: background 0.15s; white-space: nowrap; }
     .btn:hover { background: var(--bg-2); }
     .btn-p { background: var(--bg-2); font-weight: 500; }
-
-    /* Metrics */
-    .metrics { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 12px; margin-bottom: 1.5rem; }
-    .metric { background: var(--bg); border: 0.5px solid var(--border); border-radius: var(--r-lg); padding: 1rem 1.25rem; }
-    .metric-label { font-size: 12px; color: var(--text-2); margin-bottom: 6px; }
-    .metric-value { font-size: 24px; font-weight: 600; }
-
-    /* Search */
-    .search-wrap { position: relative; margin-bottom: 1.25rem; }
+    .btn-danger { border-color: #F09595; color: #A32D2D; background: transparent; }
+    .btn-danger:hover { background: #FCEBEB; }
+    .metrics { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 10px; margin-bottom: 1.5rem; }
+    .metric { background: var(--bg); border: 0.5px solid var(--border); border-radius: var(--r-lg); padding: .875rem 1rem; }
+    .metric-label { font-size: 11px; color: var(--text-2); margin-bottom: 5px; }
+    .metric-value { font-size: 22px; font-weight: 600; }
+    .main-tabs { display: flex; gap: 8px; margin-bottom: 1.5rem; }
+    .main-tab { padding: 8px 20px; border-radius: var(--r-md); border: 0.5px solid var(--border); background: transparent; color: var(--text-2); font-size: 14px; cursor: pointer; font-family: var(--font); }
+    .main-tab.active { background: var(--bg); color: var(--text); font-weight: 500; border-color: var(--border-md); }
+    .search-wrap { position: relative; margin-bottom: 1rem; }
     .search-wrap svg { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); width: 15px; height: 15px; color: var(--text-3); pointer-events: none; }
     .search-wrap input { width: 100%; padding: 9px 12px 9px 36px; border: 0.5px solid var(--border-md); border-radius: var(--r-md); background: var(--bg); color: var(--text); font-size: 13px; font-family: var(--font); }
     .search-wrap input:focus { outline: none; border-color: #378ADD; }
-
-    /* Tabs */
-    .tabs { display: flex; gap: 8px; margin-bottom: 1.25rem; }
-    .tab { padding: 7px 18px; border-radius: var(--r-md); border: 0.5px solid var(--border); background: transparent; color: var(--text-2); font-size: 13px; cursor: pointer; font-family: var(--font); }
-    .tab.active { background: var(--bg); color: var(--text); font-weight: 500; border-color: var(--border-md); }
-
-    /* Table */
-    .table-wrap { background: var(--bg); border: 0.5px solid var(--border); border-radius: var(--r-lg); overflow: hidden; margin-bottom: 1.5rem; }
+    .filter-bar { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 1.25rem; }
+    .filter-btn { padding: 6px 14px; border-radius: var(--r-md); border: 0.5px solid var(--border-md); background: transparent; color: var(--text-2); font-size: 12px; cursor: pointer; font-family: var(--font); display: inline-flex; align-items: center; gap: 5px; }
+    .filter-btn:hover { background: var(--bg-2); }
+    .filter-btn.active { background: var(--bg-2); color: var(--text); font-weight: 500; }
+    .filter-sep { width: 1px; height: 20px; background: var(--border); }
+    .filter-panel { background: var(--bg-2); border-radius: var(--r-md); padding: 14px; margin-bottom: 12px; }
+    .fp-title { font-size: 12px; font-weight: 500; color: var(--text-2); margin-bottom: 8px; }
+    .adv-section { margin-bottom: 14px; }
+    .adv-section:last-child { margin-bottom: 0; }
+    .adv-row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+    .adv-row select, .adv-row input[type=number], .adv-row input[type=date] { padding: 7px 10px; border-radius: var(--r-md); border: 0.5px solid var(--border-md); background: var(--bg); color: var(--text); font-size: 13px; font-family: var(--font); }
+    .adv-row input[type=number] { width: 90px; }
+    .status-checks { display: flex; flex-wrap: wrap; gap: 6px; }
+    .status-check { display: inline-flex; align-items: center; padding: 5px 12px; border-radius: var(--r-md); border: 1.5px solid transparent; cursor: pointer; font-size: 12px; font-weight: 500; }
+    .status-check.on { border-color: currentColor; }
+    .active-filters { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 1rem; }
+    .af-pill { display: inline-flex; align-items: center; gap: 5px; padding: 3px 10px; background: var(--bg-2); border: 0.5px solid var(--border-md); border-radius: 99px; font-size: 12px; color: var(--text-2); }
+    .af-pill button { background: none; border: none; cursor: pointer; padding: 0; color: var(--text-3); font-size: 13px; line-height: 1; }
+    .af-pill button:hover { color: var(--text); }
+    .table-wrap { background: var(--bg); border: 0.5px solid var(--border); border-radius: var(--r-lg); overflow: hidden; margin-bottom: 1.25rem; }
     table { width: 100%; border-collapse: collapse; font-size: 13px; table-layout: fixed; }
     th { text-align: left; padding: 9px 14px; font-size: 11px; font-weight: 500; color: var(--text-2); background: var(--bg-2); border-bottom: 0.5px solid var(--border); }
     td { padding: 10px 14px; border-bottom: 0.5px solid var(--border); vertical-align: middle; }
     tbody tr:last-child td { border-bottom: none; }
     tbody tr:hover td { background: var(--bg-2); cursor: pointer; }
-
-    /* Badges */
     .badge { display: inline-block; padding: 3px 9px; border-radius: 99px; font-size: 11px; font-weight: 500; white-space: nowrap; }
-    .s-uso { background: #EAF3DE; color: #3B6D11; }
-    .s-val { background: #E6F1FB; color: #185FA5; }
-    .s-sem { background: #FAEEDA; color: #854F0B; }
-    .s-des { background: #FCEBEB; color: #A32D2D; }
-    .m-brl { background: #E6F1FB; color: #185FA5; }
-    .m-usd { background: #EEEDFE; color: #534AB7; }
-    .b-op  { background: var(--bg-2); color: var(--text-2); border: 0.5px solid var(--border); }
-
-    /* Op blocks */
+    .s-uso{background:#EAF3DE;color:#3B6D11;} .s-val{background:#E6F1FB;color:#185FA5;}
+    .s-res{background:#FBEAF0;color:#72243E;} .s-sem{background:#FAEEDA;color:#854F0B;} .s-des{background:#FCEBEB;color:#A32D2D;}
+    .m-brl{background:#E6F1FB;color:#185FA5;} .m-usd{background:#EEEDFE;color:#534AB7;}
+    .b-op{background:var(--bg-2);color:var(--text-2);border:0.5px solid var(--border);}
     .op-block { background: var(--bg); border: 0.5px solid var(--border); border-radius: var(--r-lg); margin-bottom: 10px; overflow: hidden; }
     .op-header { display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; background: var(--bg-2); border-bottom: 0.5px solid var(--border); cursor: pointer; }
-    .op-body { display: none; }
-    .op-body.open { display: block; }
-    .chevron { font-size: 10px; color: var(--text-3); transition: transform 0.2s; }
-    .chevron.open { transform: rotate(90deg); }
-
-    /* Modal */
+    .op-header-left { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .op-body { display: none; } .op-body.open { display: block; }
+    .chevron { font-size: 10px; color: var(--text-3); transition: transform 0.2s; } .chevron.open { transform: rotate(90deg); }
+    .sg-header { padding: 8px 14px; background: var(--bg-2); border-bottom: 0.5px solid var(--border); font-size: 11px; font-weight: 500; color: var(--text-2); display: flex; align-items: center; gap: 8px; }
     .overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 100; align-items: flex-start; justify-content: center; padding: 48px 16px; }
     .overlay.show { display: flex; }
     .modal { background: var(--bg); border-radius: var(--r-lg); border: 0.5px solid var(--border-md); padding: 1.5rem; width: 440px; max-width: 100%; max-height: calc(100vh - 96px); overflow-y: auto; }
     .modal-title { font-size: 15px; font-weight: 600; margin-bottom: 1.25rem; }
     .field { margin-bottom: 12px; }
     .field label { display: block; font-size: 12px; color: var(--text-2); margin-bottom: 4px; }
-    .field input, .field select { width: 100%; padding: 8px 10px; border-radius: var(--r-md); border: 0.5px solid var(--border-md); background: var(--bg); color: var(--text); font-size: 13px; font-family: var(--font); }
-    .field input:focus, .field select:focus { outline: none; border-color: #378ADD; }
+    .field input, .field select, .field textarea { width: 100%; padding: 8px 10px; border-radius: var(--r-md); border: 0.5px solid var(--border-md); background: var(--bg); color: var(--text); font-size: 13px; font-family: var(--font); }
+    .field textarea { resize: vertical; min-height: 72px; line-height: 1.5; }
+    .field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: #378ADD; }
     .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px; }
     .field-row .field { margin-bottom: 0; }
     .modal-actions { display: flex; gap: 8px; margin-top: 1.25rem; }
     .modal-actions .btn { flex: 1; }
-
-    /* Status selector */
     .status-selector { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-top: 4px; }
-    .status-opt { padding: 9px 10px; border-radius: var(--r-md); border: 2px solid transparent; cursor: pointer; font-size: 12px; font-weight: 500; text-align: center; transition: opacity 0.15s; }
-    .status-opt:hover { opacity: 0.8; }
+    .status-opt { padding: 9px 10px; border-radius: var(--r-md); border: 2px solid transparent; cursor: pointer; font-size: 12px; font-weight: 500; text-align: center; }
     .status-opt.selected { border-color: currentColor; }
-    .so-uso { background: #EAF3DE; color: #3B6D11; }
-    .so-val { background: #E6F1FB; color: #185FA5; }
-    .so-sem { background: #FAEEDA; color: #854F0B; }
-    .so-des { background: #FCEBEB; color: #A32D2D; }
-
-    /* Card section */
+    .so-uso{background:#EAF3DE;color:#3B6D11;} .so-val{background:#E6F1FB;color:#185FA5;}
+    .so-res{background:#FBEAF0;color:#72243E;} .so-sem{background:#FAEEDA;color:#854F0B;} .so-des{background:#FCEBEB;color:#A32D2D;}
     .card-section { background: var(--bg-2); border-radius: var(--r-md); padding: 12px 14px; margin-bottom: 12px; }
     .card-section-title { font-size: 11px; font-weight: 500; color: var(--text-3); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 10px; }
-
-    /* Op tags */
     .ops-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; min-height: 26px; }
     .op-tag { display: inline-flex; align-items: center; gap: 5px; padding: 3px 10px; background: var(--bg-2); border: 0.5px solid var(--border); border-radius: 99px; font-size: 12px; color: var(--text-2); }
     .op-tag button { background: none; border: none; cursor: pointer; padding: 0; color: var(--text-3); font-size: 14px; line-height: 1; }
@@ -114,152 +106,145 @@
     .add-op-row { display: flex; gap: 6px; margin-top: 8px; }
     .add-op-row select { flex: 1; padding: 7px 10px; border-radius: var(--r-md); border: 0.5px solid var(--border-md); background: var(--bg); color: var(--text); font-size: 13px; font-family: var(--font); }
     .add-op-row button { padding: 7px 14px; border-radius: var(--r-md); border: 0.5px solid var(--border-md); background: var(--bg-2); color: var(--text); font-size: 13px; cursor: pointer; font-family: var(--font); white-space: nowrap; }
-    .add-op-row button:hover { background: var(--bg-3); }
-
-    /* Detail */
-    .detail-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 0.5px solid var(--border); font-size: 13px; }
+    .detail-row { display: flex; justify-content: space-between; align-items: flex-start; padding: 8px 0; border-bottom: 0.5px solid var(--border); font-size: 13px; gap: 16px; }
     .detail-row:last-child { border-bottom: none; }
-    .detail-key { color: var(--text-2); }
+    .detail-key { color: var(--text-2); flex-shrink: 0; }
     .detail-val { font-weight: 500; text-align: right; }
-
+    .obs-box { background: var(--bg-2); border-radius: var(--r-md); padding: 8px 10px; font-size: 13px; color: var(--text-2); line-height: 1.5; width: 100%; }
     .warn-box { font-size: 12px; color: #854F0B; background: #FAEEDA; padding: 8px 10px; border-radius: var(--r-md); margin-bottom: 12px; }
     .empty { text-align: center; padding: 2.5rem 1rem; font-size: 13px; color: var(--text-2); }
-
-    @media (max-width: 640px) {
-      .metrics { grid-template-columns: repeat(2, minmax(0,1fr)); }
-      .field-row { grid-template-columns: 1fr; }
-      .status-selector { grid-template-columns: 1fr 1fr; }
-    }
+    .confirm-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 200; align-items: center; justify-content: center; }
+    .confirm-overlay.show { display: flex; }
+    .confirm-box { background: var(--bg); border-radius: var(--r-lg); border: 0.5px solid var(--border-md); padding: 1.5rem; width: 340px; max-width: 94vw; }
+    @media (max-width: 640px) { .metrics { grid-template-columns: repeat(2, minmax(0,1fr)); } .field-row { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
 <div class="app">
-
   <div class="topbar">
-    <div>
-      <h1>Contas de anúncio</h1>
-      <p>Gestão e controle por operação</p>
-    </div>
+    <div><h1>Contas de anúncio</h1><p>Gestão e controle por operação</p></div>
     <div class="btn-group">
       <button class="btn" onclick="openModal('op')">+ Nova operação</button>
       <button class="btn btn-p" onclick="openModal('conta')">+ Nova conta</button>
     </div>
   </div>
-
   <div class="metrics" id="metrics"></div>
-
-  <div class="search-wrap">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-      <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
-    </svg>
-    <input type="text" id="search" placeholder="Buscar por número, operação, titular do cartão..." oninput="renderAll()">
+  <div class="main-tabs">
+    <button class="main-tab active" id="mtab-visao"  onclick="switchMainTab('visao')">Visão geral</button>
+    <button class="main-tab"        id="mtab-contas" onclick="switchMainTab('contas')">Conta de anúncio</button>
   </div>
 
-  <div class="tabs">
-    <button class="tab active" id="tab-op" onclick="switchTab('op')">Por operação</button>
-    <button class="tab" id="tab-conta" onclick="switchTab('conta')">Por conta</button>
+  <div id="view-visao">
+    <div class="search-wrap">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="text" id="search-visao" placeholder="Buscar por número, operação, titular, cartão..." oninput="renderVisao()">
+    </div>
+    <div id="visao-content"></div>
   </div>
 
-  <div id="view-op"></div>
-  <div id="view-conta" style="display:none;"></div>
-
+  <div id="view-contas" style="display:none;">
+    <div class="search-wrap">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="text" id="search-contas" placeholder="Buscar por número, operação, titular, cartão..." oninput="applyFilters()">
+    </div>
+    <div class="filter-bar">
+      <button class="filter-btn" id="fbtn-cartao" onclick="toggleSubView('cartao')">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>Cartão
+      </button>
+      <button class="filter-btn" id="fbtn-moeda" onclick="toggleSubView('moeda')">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>Moeda
+      </button>
+      <div class="filter-sep"></div>
+      <button class="filter-btn" id="fbtn-adv" onclick="toggleSubView('adv')">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="6" x2="20" y2="6"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="11" y1="18" x2="13" y2="18"/></svg>Filtros
+      </button>
+      <button class="filter-btn" id="fbtn-clear" style="display:none;color:#A32D2D;border-color:#F09595;" onclick="clearAllFilters()">Limpar tudo</button>
+    </div>
+    <div id="panel-moeda" style="display:none;" class="filter-panel">
+      <div class="fp-title">Filtrar por moeda</div>
+      <div style="display:flex;gap:8px;">
+        <button class="filter-btn" id="mb-brl" onclick="setMoedaFilter('BRL')">Real (BRL)</button>
+        <button class="filter-btn" id="mb-usd" onclick="setMoedaFilter('USD')">Dólar (USD)</button>
+        <button class="filter-btn" id="mb-all" onclick="setMoedaFilter(null)" style="color:var(--text-3);">Todas</button>
+      </div>
+    </div>
+    <div id="panel-adv" style="display:none;" class="filter-panel">
+      <div class="adv-section">
+        <div class="fp-title">Status</div>
+        <div class="status-checks" id="status-checks"></div>
+      </div>
+      <div class="adv-section">
+        <div class="fp-title">Dias ativos</div>
+        <div class="adv-row">
+          <select id="dias-op" onchange="applyFilters()"><option value="">Qualquer</option><option value="gt">Mais de</option><option value="lt">Menos de</option><option value="between">Entre</option></select>
+          <input type="number" id="dias-a" min="0" placeholder="dias" oninput="applyFilters()">
+          <span id="dias-e-label" style="font-size:13px;color:var(--text-2);display:none;">e</span>
+          <input type="number" id="dias-b" min="0" placeholder="dias" style="display:none;" oninput="applyFilters()">
+        </div>
+      </div>
+      <div class="adv-section">
+        <div class="fp-title">Data de atribuição</div>
+        <div class="adv-row">
+          <select id="atrib-op" onchange="applyFilters()"><option value="">Qualquer</option><option value="before">Antes de</option><option value="after">Depois de</option><option value="between">Entre</option></select>
+          <input type="date" id="atrib-a" oninput="applyFilters()">
+          <span id="atrib-e-label" style="font-size:13px;color:var(--text-2);display:none;">e</span>
+          <input type="date" id="atrib-b" style="display:none;" oninput="applyFilters()">
+        </div>
+      </div>
+    </div>
+    <div id="active-filters"></div>
+    <div id="contas-content"></div>
+  </div>
 </div>
 
-<!-- Modal: Nova Operação -->
 <div class="overlay" id="modal-op">
   <div class="modal" style="width:360px;">
     <div class="modal-title">Nova operação</div>
-    <div class="field">
-      <label>Nome da operação</label>
-      <input id="op-nome" type="text" placeholder="ex: Marketing BR">
-    </div>
-    <div class="modal-actions">
-      <button class="btn" onclick="closeModal('op')">Cancelar</button>
-      <button class="btn btn-p" onclick="saveOp()">Salvar</button>
-    </div>
+    <div class="field"><label>Nome da operação</label><input id="op-nome" type="text" placeholder="ex: Marketing BR"></div>
+    <div class="modal-actions"><button class="btn" onclick="closeModal('op')">Cancelar</button><button class="btn btn-p" onclick="saveOp()">Salvar</button></div>
   </div>
 </div>
 
-<!-- Modal: Nova / Editar Conta -->
 <div class="overlay" id="modal-conta">
   <div class="modal">
     <div class="modal-title" id="modal-conta-title">Nova conta de anúncio</div>
     <div id="no-op-warn" class="warn-box" style="display:none;">Cadastre ao menos uma operação antes de adicionar contas.</div>
     <div id="conta-form">
-
-      <!-- 1. Nº conta -->
-      <div class="field">
-        <label>Nº da conta</label>
-        <input id="c-num" type="text" placeholder="ex: 1234567890">
-      </div>
-
-      <!-- 2. Status colorido -->
+      <div class="field"><label>Nº da conta</label><input id="c-num" type="text" placeholder="ex: 1234567890"></div>
       <div class="field">
         <label>Status</label>
         <div class="status-selector">
           <div class="status-opt so-uso" data-val="ativo-uso" onclick="selectStatus(this)">Ativa (em uso)</div>
           <div class="status-opt so-val" data-val="ativo-val" onclick="selectStatus(this)">Ativa (em validação)</div>
-          <div class="status-opt so-sem" data-val="sem-uso" onclick="selectStatus(this)">Sem uso</div>
+          <div class="status-opt so-res" data-val="ativo-res" onclick="selectStatus(this)">Ativa (com restrição)</div>
+          <div class="status-opt so-sem" data-val="sem-uso"   onclick="selectStatus(this)">Sem uso</div>
           <div class="status-opt so-des" data-val="desativada" onclick="selectStatus(this)">Desativada</div>
         </div>
         <input type="hidden" id="c-status" value="ativo-uso">
       </div>
-
-      <!-- 3. Operações -->
+      <div class="field"><label>Observação <span style="color:var(--text-3);font-weight:400;">(opcional)</span></label><textarea id="c-obs" placeholder="ex: Conta com limite reduzido por política interna..."></textarea></div>
       <div class="field">
         <label>Operação vinculada</label>
         <div class="ops-tags" id="conta-ops-tags"></div>
-        <div class="add-op-row">
-          <select id="c-op-sel"></select>
-          <button onclick="addOpToForm()">+ Adicionar</button>
-        </div>
+        <div class="add-op-row"><select id="c-op-sel"></select><button onclick="addOpToForm()">+ Adicionar</button></div>
       </div>
-
-      <!-- 4. Moeda -->
-      <div class="field">
-        <label>Moeda</label>
-        <select id="c-moeda">
-          <option value="BRL">Real (BRL)</option>
-          <option value="USD">Dólar (USD)</option>
-        </select>
-      </div>
-
-      <!-- 5. Cartão -->
+      <div class="field"><label>Moeda</label><select id="c-moeda"><option value="BRL">Real (BRL)</option><option value="USD">Dólar (USD)</option></select></div>
       <div class="card-section">
         <div class="card-section-title">Cartão</div>
         <div class="field-row">
-          <div class="field">
-            <label>Final do cartão</label>
-            <input id="c-cartao" type="text" maxlength="4" placeholder="ex: 4321">
-          </div>
-          <div class="field">
-            <label>Titular do cartão</label>
-            <input id="c-titular" type="text" placeholder="ex: João Silva">
-          </div>
+          <div class="field"><label>Final do cartão</label><input id="c-cartao" type="text" maxlength="4" placeholder="ex: 4321"></div>
+          <div class="field"><label>Titular</label><input id="c-titular" type="text" placeholder="ex: João Silva"></div>
         </div>
       </div>
-
-      <!-- 6. Datas -->
       <div class="field-row">
-        <div class="field">
-          <label>Data de atribuição</label>
-          <input id="c-atrib" type="date">
-        </div>
-        <div class="field" id="field-desativ" style="display:none;">
-          <label>Data de desativação</label>
-          <input id="c-desativ" type="date">
-        </div>
+        <div class="field"><label>Data de atribuição</label><input id="c-atrib" type="date"></div>
+        <div class="field" id="field-desativ" style="display:none;"><label>Data de desativação</label><input id="c-desativ" type="date"></div>
       </div>
-
     </div>
-    <div class="modal-actions">
-      <button class="btn" onclick="closeModal('conta')">Cancelar</button>
-      <button class="btn btn-p" id="btn-sv-conta" onclick="saveConta()">Salvar</button>
-    </div>
+    <div class="modal-actions"><button class="btn" onclick="closeModal('conta')">Cancelar</button><button class="btn btn-p" id="btn-sv-conta" onclick="saveConta()">Salvar</button></div>
   </div>
 </div>
 
-<!-- Modal: Detalhe -->
 <div class="overlay" id="modal-detail">
   <div class="modal" style="width:400px;">
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;">
@@ -268,256 +253,260 @@
     </div>
     <div id="detail-body"></div>
     <div class="modal-actions" style="margin-top:1.25rem;">
+      <button class="btn btn-danger" onclick="confirmDelete(detailId)">Excluir</button>
       <button class="btn" onclick="closeModal('detail')">Fechar</button>
       <button class="btn btn-p" onclick="editFromDetail()">Editar</button>
     </div>
   </div>
 </div>
 
+<div class="confirm-overlay" id="confirm-overlay">
+  <div class="confirm-box">
+    <div style="font-size:15px;font-weight:600;margin-bottom:8px;">Excluir conta?</div>
+    <div style="font-size:13px;color:var(--text-2);margin-bottom:1.25rem;">Esta ação não pode ser desfeita.</div>
+    <div style="display:flex;gap:8px;">
+      <button class="btn" style="flex:1;" onclick="closeConfirm()">Cancelar</button>
+      <button class="btn btn-danger" style="flex:1;" onclick="deleteConfirmed()">Excluir</button>
+    </div>
+  </div>
+</div>
+
 <script>
-  // ─────────────────────────────────────────────
-  // SUPABASE — descomente e configure quando pronto
-  // ─────────────────────────────────────────────
-  // const SUPABASE_URL = 'https://xxxx.supabase.co';
-  // const SUPABASE_KEY = 'your-anon-key';
-  // async function dbLoadOps() { ... }
-  // async function dbLoadContas() { ... }
-  // async function dbSaveConta(conta) { ... }
-  // ─────────────────────────────────────────────
+  const TODAY=new Date().toISOString().slice(0,10);
+  let ops=[],accounts=[],editingId=null,detailId=null,formOps=[],deleteTargetId=null;
+  let activeSubView=null,filterMoeda=null,filterStatus=[];
+  let filterDiasOp='',filterDiasA='',filterDiasB='',filterAtribOp='',filterAtribA='',filterAtribB='';
 
-  const TODAY = new Date().toISOString().slice(0,10);
-  let ops = [], accounts = [], currentTab = 'op', editingId = null, detailId = null, formOps = [];
+  const sLabel={'ativo-uso':'Ativa (em uso)','ativo-val':'Ativa (em validação)','ativo-res':'Ativa (com restrição)','sem-uso':'Sem uso','desativada':'Desativada'};
+  const sClass={'ativo-uso':'s-uso','ativo-val':'s-val','ativo-res':'s-res','sem-uso':'s-sem','desativada':'s-des'};
+  const soClass={'ativo-uso':'so-uso','ativo-val':'so-val','ativo-res':'so-res','sem-uso':'so-sem','desativada':'so-des'};
+  const sOrder=['ativo-uso','ativo-val','ativo-res','sem-uso','desativada'];
+  const sColor={'ativo-uso':'#3B6D11','ativo-val':'#185FA5','ativo-res':'#72243E','sem-uso':'#854F0B','desativada':'#A32D2D'};
 
-  const sLabel = { 'ativo-uso':'Ativa (em uso)', 'ativo-val':'Ativa (em validação)', 'sem-uso':'Sem uso', 'desativada':'Desativada' };
-  const sClass = { 'ativo-uso':'s-uso', 'ativo-val':'s-val', 'sem-uso':'s-sem', 'desativada':'s-des' };
+  function bStatus(s){return`<span class="badge ${sClass[s]}">${sLabel[s]}</span>`;}
+  function bMoeda(m){return`<span class="badge ${m==='BRL'?'m-brl':'m-usd'}">${m}</span>`;}
+  function fmtDate(d){if(!d)return'—';const[y,m,dd]=d.split('-');return`${dd}/${m}/${y}`;}
+  function diasAtivos(a){const from=new Date(a.atrib),to=(a.status==='desativada'&&a.desativ)?new Date(a.desativ):new Date();return Math.max(0,Math.round((to-from)/(1000*60*60*24)));}
 
-  function bStatus(s) { return `<span class="badge ${sClass[s]}">${sLabel[s]}</span>`; }
-  function bMoeda(m)  { return `<span class="badge ${m==='BRL'?'m-brl':'m-usd'}">${m}</span>`; }
-  function fmtDate(d) { if(!d)return'—'; const[y,m,dd]=d.split('-'); return`${dd}/${m}/${y}`; }
-  function diasAtivos(a) {
-    const from = new Date(a.atrib);
-    const to   = (a.status==='desativada'&&a.desativ) ? new Date(a.desativ) : new Date();
-    return Math.max(0, Math.round((to-from)/(1000*60*60*24)));
-  }
-  function filtered() {
-    const q = (document.getElementById('search').value||'').trim().toLowerCase();
-    if(!q) return accounts;
-    return accounts.filter(a =>
-      a.num.toLowerCase().includes(q) ||
-      a.ops.some(o=>o.toLowerCase().includes(q)) ||
-      (a.cartao&&a.cartao.includes(q)) ||
-      (a.titular&&a.titular.toLowerCase().includes(q))
-    );
-  }
-
-  function save() {
-    localStorage.setItem('adm_ops',    JSON.stringify(ops));
-    localStorage.setItem('adm_contas', JSON.stringify(accounts));
-  }
-  function load() {
-    ops      = JSON.parse(localStorage.getItem('adm_ops')    || 'null') || ['Marketing BR','Vendas SP','Vendas RJ','Performance'];
-    accounts = JSON.parse(localStorage.getItem('adm_contas') || 'null') || [
-      {id:1,num:'1234567890',ops:['Marketing BR'],moeda:'BRL',cartao:'4321',titular:'João Silva',status:'ativo-uso',atrib:'2025-01-10',desativ:null},
-      {id:2,num:'9876543210',ops:['Marketing BR','Performance'],moeda:'USD',cartao:'8899',titular:'Ana Costa',status:'ativo-val',atrib:'2025-03-01',desativ:null},
-      {id:3,num:'5551234567',ops:['Vendas SP'],moeda:'BRL',cartao:'1122',titular:'Carlos Melo',status:'sem-uso',atrib:'2024-11-05',desativ:null},
-      {id:4,num:'7778889990',ops:['Vendas RJ'],moeda:'BRL',cartao:'5566',titular:'Maria Lima',status:'desativada',atrib:'2024-06-01',desativ:'2025-02-15'},
-      {id:5,num:'6667778889',ops:['Performance','Vendas SP'],moeda:'USD',cartao:'3344',titular:'Pedro Rocha',status:'ativo-uso',atrib:'2025-02-20',desativ:null},
+  function save(){localStorage.setItem('adm_ops',JSON.stringify(ops));localStorage.setItem('adm_contas',JSON.stringify(accounts));}
+  function load(){
+    ops=JSON.parse(localStorage.getItem('adm_ops')||'null')||['Marketing BR','Vendas SP','Vendas RJ','Performance'];
+    accounts=JSON.parse(localStorage.getItem('adm_contas')||'null')||[
+      {id:1,num:'1234567890',ops:['Marketing BR'],moeda:'BRL',cartao:'4321',titular:'João Silva',obs:'',status:'ativo-uso',atrib:'2025-01-10',desativ:null},
+      {id:2,num:'9876543210',ops:['Marketing BR','Performance'],moeda:'USD',cartao:'8899',titular:'Ana Costa',obs:'Aguardando aprovação do gestor.',status:'ativo-val',atrib:'2025-03-01',desativ:null},
+      {id:3,num:'5551234567',ops:['Vendas SP'],moeda:'BRL',cartao:'1122',titular:'Carlos Melo',obs:'Limite reduzido. Máximo R$500/dia.',status:'ativo-res',atrib:'2024-11-05',desativ:null},
+      {id:4,num:'7778889990',ops:['Vendas RJ'],moeda:'BRL',cartao:'5566',titular:'Maria Lima',obs:'',status:'desativada',atrib:'2024-06-01',desativ:'2025-02-15'},
+      {id:5,num:'6667778889',ops:['Performance','Vendas SP'],moeda:'USD',cartao:'3344',titular:'Pedro Rocha',obs:'',status:'ativo-uso',atrib:'2025-02-20',desativ:null},
+      {id:6,num:'1112223334',ops:['Vendas RJ'],moeda:'BRL',cartao:'4321',titular:'João Silva',obs:'Conta reserva.',status:'sem-uso',atrib:'2025-01-15',desativ:null},
     ];
   }
 
-  function renderMetrics() {
-    const total   = accounts.length;
-    const ativos  = accounts.filter(a=>a.status==='ativo-uso'||a.status==='ativo-val').length;
-    const desativ = accounts.filter(a=>a.status==='desativada').length;
-    document.getElementById('metrics').innerHTML = `
-      <div class="metric"><div class="metric-label">Total de contas</div><div class="metric-value">${total}</div></div>
-      <div class="metric"><div class="metric-label">Ativas</div><div class="metric-value" style="color:#3B6D11">${ativos}</div></div>
-      <div class="metric"><div class="metric-label">Desativadas</div><div class="metric-value" style="color:#A32D2D">${desativ}</div></div>
-      <div class="metric"><div class="metric-label">Operações</div><div class="metric-value">${ops.length}</div></div>
-    `;
-  }
-
-  function renderOpView() {
-    const list = filtered();
-    if(!ops.length){ document.getElementById('view-op').innerHTML='<div class="empty">Nenhuma operação cadastrada. Clique em "+ Nova operação" para começar.</div>'; return; }
-    let html = '';
-    ops.forEach(op => {
-      const contas = list.filter(a=>a.ops.includes(op));
-      const desativ = contas.filter(a=>a.status==='desativada').length;
-      html += `<div class="op-block">
-        <div class="op-header" onclick="toggleOp(this)">
-          <div style="display:flex;align-items:center;gap:8px;">
-            <span style="font-weight:500;font-size:14px;">${op}</span>
-            ${desativ>0?`<span class="badge s-des">${desativ} desativada${desativ>1?'s':''}</span>`:''}
-          </div>
-          <div style="display:flex;align-items:center;gap:10px;">
-            <span style="font-size:12px;color:var(--text-2);">${contas.length} conta${contas.length!==1?'s':''}</span>
-            <span class="chevron">&#9654;</span>
-          </div>
-        </div>
-        <div class="op-body">
-          ${contas.length ? `
-            <div class="table-wrap" style="border-radius:0;border:none;margin-bottom:0;">
-              <table>
-                <thead><tr>
-                  <th style="width:22%">Nº conta</th>
-                  <th style="width:26%">Status</th>
-                  <th style="width:14%">Moeda</th>
-                  <th style="width:22%">Titular cartão</th>
-                  <th style="width:16%">Dias ativos</th>
-                </tr></thead>
-                <tbody>${contas.map(c=>`<tr onclick="openDetail(${c.id})">
-                  <td style="font-family:var(--mono);font-size:12px;">${c.num}</td>
-                  <td>${bStatus(c.status)}</td>
-                  <td>${bMoeda(c.moeda)}</td>
-                  <td style="font-size:12px;">${c.titular||'—'}</td>
-                  <td style="font-size:12px;color:var(--text-2);">${diasAtivos(c)} dias</td>
-                </tr>`).join('')}</tbody>
-              </table>
-            </div>` : `<div style="padding:1rem 16px;font-size:13px;color:var(--text-2);">Nenhuma conta vinculada a esta operação.</div>`}
-        </div>
-      </div>`;
+  function getFC(){
+    const q=(document.getElementById('search-contas').value||'').trim().toLowerCase();
+    return accounts.filter(a=>{
+      if(q&&!(a.num.toLowerCase().includes(q)||a.ops.some(o=>o.toLowerCase().includes(q))||(a.cartao&&a.cartao.includes(q))||(a.titular&&a.titular.toLowerCase().includes(q))))return false;
+      if(filterMoeda&&a.moeda!==filterMoeda)return false;
+      if(filterStatus.length&&!filterStatus.includes(a.status))return false;
+      const d=diasAtivos(a);
+      if(filterDiasOp==='gt'&&filterDiasA!==''&&d<=Number(filterDiasA))return false;
+      if(filterDiasOp==='lt'&&filterDiasA!==''&&d>=Number(filterDiasA))return false;
+      if(filterDiasOp==='between'&&filterDiasA!==''&&filterDiasB!==''&&(d<Number(filterDiasA)||d>Number(filterDiasB)))return false;
+      const at=a.atrib||'';
+      if(filterAtribOp==='before'&&filterAtribA&&at>=filterAtribA)return false;
+      if(filterAtribOp==='after'&&filterAtribA&&at<=filterAtribA)return false;
+      if(filterAtribOp==='between'&&filterAtribA&&filterAtribB&&(at<filterAtribA||at>filterAtribB))return false;
+      return true;
     });
-    document.getElementById('view-op').innerHTML = html;
   }
 
-  function renderContaView() {
-    const list = filtered();
-    const rows = list.map(c=>`<tr onclick="openDetail(${c.id})">
-      <td style="font-family:var(--mono);font-size:12px;">${c.num}</td>
-      <td>${bStatus(c.status)}</td>
-      <td><div style="display:flex;flex-wrap:wrap;gap:4px;">${c.ops.map(o=>`<span class="badge b-op">${o}</span>`).join('')}</div></td>
-      <td>${bMoeda(c.moeda)}</td>
-      <td style="font-size:12px;">${c.titular||'—'}</td>
-      <td style="font-size:12px;color:var(--text-2);">${diasAtivos(c)} dias</td>
-    </tr>`).join('');
-    document.getElementById('view-conta').innerHTML = `
-      <div class="table-wrap"><table>
-        <thead><tr>
-          <th style="width:20%">Nº conta</th>
-          <th style="width:22%">Status</th>
-          <th style="width:20%">Operações</th>
-          <th style="width:10%">Moeda</th>
-          <th style="width:16%">Titular</th>
-          <th style="width:12%">Dias ativos</th>
-        </tr></thead>
-        <tbody>${rows||'<tr><td colspan="6"><div class="empty">Nenhuma conta encontrada</div></td></tr>'}</tbody>
-      </table></div>`;
+  function renderMetrics(){
+    const defs=[...sOrder.map(k=>({key:k,label:sLabel[k],color:sColor[k]})),{key:null,label:'Total',color:'var(--text)'}];
+    document.getElementById('metrics').innerHTML=defs.map(d=>{
+      const c=d.key?accounts.filter(a=>a.status===d.key).length:accounts.length;
+      return`<div class="metric"><div class="metric-label">${d.label}</div><div class="metric-value" style="color:${d.color}">${c}</div></div>`;
+    }).join('');
   }
 
-  function toggleOp(h) {
-    const b=h.nextElementSibling, c=h.querySelector('.chevron');
-    c.classList.toggle('open', b.classList.toggle('open'));
-  }
-  function switchTab(tab) {
-    currentTab=tab;
-    document.getElementById('tab-op').classList.toggle('active', tab==='op');
-    document.getElementById('tab-conta').classList.toggle('active', tab==='conta');
-    document.getElementById('view-op').style.display    = tab==='op'    ? 'block' : 'none';
-    document.getElementById('view-conta').style.display = tab==='conta' ? 'block' : 'none';
+  function renderVisao(){
+    const q=(document.getElementById('search-visao').value||'').trim().toLowerCase();
+    const list=q?accounts.filter(a=>a.num.toLowerCase().includes(q)||a.ops.some(o=>o.toLowerCase().includes(q))||(a.cartao&&a.cartao.includes(q))||(a.titular&&a.titular.toLowerCase().includes(q))):accounts;
+    if(!ops.length){document.getElementById('visao-content').innerHTML='<div class="empty">Nenhuma operação cadastrada.</div>';return;}
+    let html='';
+    ops.forEach(op=>{
+      const contas=list.filter(a=>a.ops.includes(op));
+      const des=contas.filter(a=>a.status==='desativada').length;
+      const res=contas.filter(a=>a.status==='ativo-res').length;
+      html+=`<div class="op-block"><div class="op-header" onclick="toggleOp(this)">
+        <div class="op-header-left"><span style="font-weight:500;font-size:14px;">${op}</span>
+          ${des>0?`<span class="badge s-des">${des} desativada${des>1?'s':''}</span>`:''}
+          ${res>0?`<span class="badge s-res">${res} com restrição</span>`:''}
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;"><span style="font-size:12px;color:var(--text-2);">${contas.length} conta${contas.length!==1?'s':''}</span><span class="chevron">&#9654;</span></div>
+      </div><div class="op-body">${contas.length?`<div class="table-wrap" style="border-radius:0;border:none;margin-bottom:0;"><table>
+        <thead><tr><th style="width:20%">Nº conta</th><th style="width:26%">Status</th><th style="width:12%">Moeda</th><th style="width:14%">Cartão</th><th style="width:16%">Titular</th><th style="width:12%">Dias ativos</th></tr></thead>
+        <tbody>${contas.map(c=>`<tr onclick="openDetail(${c.id})">
+          <td style="font-family:var(--mono);font-size:12px;">${c.num}</td><td>${bStatus(c.status)}</td><td>${bMoeda(c.moeda)}</td>
+          <td style="font-family:var(--mono);font-size:12px;">${c.cartao?'•• '+c.cartao:'—'}</td>
+          <td style="font-size:12px;">${c.titular||'—'}</td><td style="font-size:12px;color:var(--text-2);">${diasAtivos(c)} dias</td>
+        </tr>`).join('')}</tbody></table></div>`:`<div style="padding:1rem 16px;font-size:13px;color:var(--text-2);">Nenhuma conta vinculada.</div>`}</div></div>`;
+    });
+    document.getElementById('visao-content').innerHTML=html||'<div class="empty">Nenhuma conta encontrada.</div>';
   }
 
-  function selectStatus(el) {
-    document.querySelectorAll('.status-opt').forEach(x=>x.classList.remove('selected'));
-    el.classList.add('selected');
-    document.getElementById('c-status').value = el.dataset.val;
-    document.getElementById('field-desativ').style.display = el.dataset.val==='desativada' ? 'block' : 'none';
-    if(el.dataset.val==='desativada') document.getElementById('c-desativ').value = TODAY;
+  function renderContasView(){
+    const list=getFC();let html='';
+    if(activeSubView==='cartao'){
+      const cartoes=[...new Set(accounts.map(a=>a.cartao).filter(Boolean))].sort();
+      cartoes.forEach(cartao=>{
+        const contas=list.filter(a=>a.cartao===cartao);if(!contas.length)return;
+        html+=`<div class="op-block"><div class="op-header" onclick="toggleOp(this)">
+          <div style="display:flex;align-items:center;gap:10px;"><span style="font-weight:500;font-size:14px;font-family:var(--mono);">•••• ${cartao}</span><span style="font-size:13px;color:var(--text-2);">${contas[0].titular||'—'}</span></div>
+          <div style="display:flex;align-items:center;gap:10px;"><span style="font-size:12px;color:var(--text-2);">${contas.length} conta${contas.length!==1?'s':''}</span><span class="chevron">&#9654;</span></div>
+        </div><div class="op-body"><table>
+          <thead><tr><th style="width:24%">Nº conta</th><th style="width:28%">Status</th><th style="width:22%">Operações</th><th style="width:14%">Moeda</th><th style="width:12%">Dias ativos</th></tr></thead>
+          <tbody>${contas.map(c=>`<tr onclick="openDetail(${c.id})">
+            <td style="font-family:var(--mono);font-size:12px;">${c.num}</td><td>${bStatus(c.status)}</td>
+            <td><div style="display:flex;flex-wrap:wrap;gap:3px;">${c.ops.map(o=>`<span class="badge b-op">${o}</span>`).join('')}</div></td>
+            <td>${bMoeda(c.moeda)}</td><td style="font-size:12px;color:var(--text-2);">${diasAtivos(c)} dias</td>
+          </tr>`).join('')}</tbody></table></div></div>`;
+      });
+      if(!html)html='<div class="empty">Nenhum cartão encontrado.</div>';
+    } else {
+      sOrder.forEach(s=>{
+        const contas=list.filter(a=>a.status===s);if(!contas.length)return;
+        html+=`<div class="table-wrap"><div class="sg-header">${bStatus(s)}<span style="color:var(--text-3);">${contas.length} conta${contas.length!==1?'s':''}</span></div>
+          <table><thead><tr><th style="width:22%">Nº conta</th><th style="width:22%">Operações</th><th style="width:12%">Moeda</th><th style="width:14%">Cartão</th><th style="width:16%">Atribuição</th><th style="width:14%">Dias ativos</th></tr></thead>
+          <tbody>${contas.map(c=>`<tr onclick="openDetail(${c.id})">
+            <td style="font-family:var(--mono);font-size:12px;">${c.num}</td>
+            <td><div style="display:flex;flex-wrap:wrap;gap:3px;">${c.ops.map(o=>`<span class="badge b-op">${o}</span>`).join('')}</div></td>
+            <td>${bMoeda(c.moeda)}</td><td style="font-family:var(--mono);font-size:12px;">${c.cartao?'•••• '+c.cartao:'—'}</td>
+            <td style="font-size:12px;color:var(--text-2);">${fmtDate(c.atrib)}</td><td style="font-size:12px;color:var(--text-2);">${diasAtivos(c)} dias</td>
+          </tr>`).join('')}</tbody></table></div>`;
+      });
+      if(!html)html='<div class="empty">Nenhuma conta encontrada para os filtros selecionados.</div>';
+    }
+    document.getElementById('contas-content').innerHTML=html;
+    renderActivePills();
   }
 
-  function openModal(type, id) {
-    if(type==='conta') {
-      editingId = id||null;
-      document.getElementById('modal-conta-title').textContent = editingId ? 'Editar conta' : 'Nova conta de anúncio';
-      const warn=document.getElementById('no-op-warn'), form=document.getElementById('conta-form'), sv=document.getElementById('btn-sv-conta');
-      if(!ops.length){ warn.style.display='block'; form.style.display='none'; sv.style.display='none'; }
-      else {
-        warn.style.display='none'; form.style.display='block'; sv.style.display='block';
-        document.getElementById('c-op-sel').innerHTML = ops.map(o=>`<option value="${o}">${o}</option>`).join('');
-        const sv2 = editingId ? accounts.find(x=>x.id===editingId).status : 'ativo-uso';
-        document.querySelectorAll('.status-opt').forEach(x=>x.classList.toggle('selected', x.dataset.val===sv2));
-        document.getElementById('c-status').value = sv2;
-        if(editingId) {
-          const a = accounts.find(x=>x.id===editingId);
-          document.getElementById('c-num').value     = a.num;
-          document.getElementById('c-moeda').value   = a.moeda;
-          document.getElementById('c-cartao').value  = a.cartao||'';
-          document.getElementById('c-titular').value = a.titular||'';
-          document.getElementById('c-atrib').value   = a.atrib||TODAY;
-          document.getElementById('c-desativ').value = a.desativ||TODAY;
-          document.getElementById('field-desativ').style.display = a.status==='desativada' ? 'block' : 'none';
-          formOps = [...a.ops];
+  function renderActivePills(){
+    const pills=[];
+    if(filterMoeda)pills.push({label:`Moeda: ${filterMoeda}`,clear:()=>{filterMoeda=null;syncMoedaBtns();applyFilters();}});
+    filterStatus.forEach(s=>pills.push({label:sLabel[s],clear:()=>{filterStatus=filterStatus.filter(x=>x!==s);buildStatusChecks();applyFilters();}}));
+    if(filterDiasOp&&filterDiasA!==''){const l=filterDiasOp==='gt'?`Dias > ${filterDiasA}`:filterDiasOp==='lt'?`Dias < ${filterDiasA}`:`Dias ${filterDiasA}–${filterDiasB}`;pills.push({label:l,clear:()=>{filterDiasOp='';filterDiasA='';filterDiasB='';['dias-op','dias-a','dias-b'].forEach(i=>document.getElementById(i).value='');applyFilters();}});}
+    if(filterAtribOp&&filterAtribA){const l=filterAtribOp==='before'?`Atrib. antes de ${fmtDate(filterAtribA)}`:filterAtribOp==='after'?`Atrib. depois de ${fmtDate(filterAtribA)}`:`Atrib. ${fmtDate(filterAtribA)}–${fmtDate(filterAtribB)}`;pills.push({label:l,clear:()=>{filterAtribOp='';filterAtribA='';filterAtribB='';['atrib-op','atrib-a','atrib-b'].forEach(i=>document.getElementById(i).value='');applyFilters();}});}
+    document.getElementById('active-filters').innerHTML=pills.length?`<div class="active-filters">${pills.map((p,i)=>`<span class="af-pill">${p.label}<button onclick="window._p(${i})">&times;</button></span>`).join('')}</div>`:'';
+    window._p=i=>pills[i].clear();
+    document.getElementById('fbtn-clear').style.display=pills.length?'inline-flex':'none';
+  }
+
+  function applyFilters(){
+    filterDiasOp=document.getElementById('dias-op').value;filterDiasA=document.getElementById('dias-a').value;filterDiasB=document.getElementById('dias-b').value;
+    filterAtribOp=document.getElementById('atrib-op').value;filterAtribA=document.getElementById('atrib-a').value;filterAtribB=document.getElementById('atrib-b').value;
+    document.getElementById('dias-b').style.display=filterDiasOp==='between'?'':'none';
+    document.getElementById('dias-e-label').style.display=filterDiasOp==='between'?'':'none';
+    document.getElementById('atrib-b').style.display=filterAtribOp==='between'?'':'none';
+    document.getElementById('atrib-e-label').style.display=filterAtribOp==='between'?'':'none';
+    renderContasView();
+  }
+
+  function toggleSubView(v){
+    activeSubView=activeSubView===v?null:v;
+    ['cartao','moeda','adv'].forEach(x=>{
+      document.getElementById('fbtn-'+x).classList.toggle('active',activeSubView===x);
+      if(x==='moeda'||x==='adv')document.getElementById('panel-'+x).style.display=activeSubView===x?'block':'none';
+    });
+    renderContasView();
+  }
+
+  function setMoedaFilter(m){filterMoeda=m;syncMoedaBtns();applyFilters();}
+  function syncMoedaBtns(){document.getElementById('mb-brl').classList.toggle('active',filterMoeda==='BRL');document.getElementById('mb-usd').classList.toggle('active',filterMoeda==='USD');document.getElementById('mb-all').classList.toggle('active',filterMoeda===null);}
+  function buildStatusChecks(){document.getElementById('status-checks').innerHTML=sOrder.map(s=>`<div class="status-check ${soClass[s]}${filterStatus.includes(s)?' on':''}" onclick="toggleSF('${s}')">${sLabel[s]}</div>`).join('');}
+  function toggleSF(s){filterStatus=filterStatus.includes(s)?filterStatus.filter(x=>x!==s):[...filterStatus,s];buildStatusChecks();applyFilters();}
+  function clearAllFilters(){filterMoeda=null;filterStatus=[];filterDiasOp='';filterDiasA='';filterDiasB='';filterAtribOp='';filterAtribA='';filterAtribB='';['dias-op','dias-a','dias-b','atrib-op','atrib-a','atrib-b'].forEach(i=>document.getElementById(i).value='');syncMoedaBtns();buildStatusChecks();applyFilters();}
+
+  function switchMainTab(tab){
+    document.getElementById('mtab-visao').classList.toggle('active',tab==='visao');
+    document.getElementById('mtab-contas').classList.toggle('active',tab==='contas');
+    document.getElementById('view-visao').style.display=tab==='visao'?'block':'none';
+    document.getElementById('view-contas').style.display=tab==='contas'?'block':'none';
+  }
+
+  function toggleOp(h){const b=h.nextElementSibling,c=h.querySelector('.chevron');c.classList.toggle('open',b.classList.toggle('open'));}
+
+  function selectStatus(el){
+    document.querySelectorAll('.status-opt').forEach(x=>x.classList.remove('selected'));el.classList.add('selected');
+    document.getElementById('c-status').value=el.dataset.val;
+    document.getElementById('field-desativ').style.display=el.dataset.val==='desativada'?'block':'none';
+    if(el.dataset.val==='desativada')document.getElementById('c-desativ').value=TODAY;
+  }
+
+  function openModal(type,id){
+    if(type==='conta'){
+      editingId=id||null;
+      document.getElementById('modal-conta-title').textContent=editingId?'Editar conta':'Nova conta de anúncio';
+      const warn=document.getElementById('no-op-warn'),form=document.getElementById('conta-form'),sv=document.getElementById('btn-sv-conta');
+      if(!ops.length){warn.style.display='block';form.style.display='none';sv.style.display='none';}
+      else{
+        warn.style.display='none';form.style.display='block';sv.style.display='block';
+        document.getElementById('c-op-sel').innerHTML=ops.map(o=>`<option value="${o}">${o}</option>`).join('');
+        const sv2=editingId?accounts.find(x=>x.id===editingId).status:'ativo-uso';
+        document.querySelectorAll('.status-opt').forEach(x=>x.classList.toggle('selected',x.dataset.val===sv2));
+        document.getElementById('c-status').value=sv2;
+        if(editingId){
+          const a=accounts.find(x=>x.id===editingId);
+          document.getElementById('c-num').value=a.num;document.getElementById('c-moeda').value=a.moeda;
+          document.getElementById('c-cartao').value=a.cartao||'';document.getElementById('c-titular').value=a.titular||'';
+          document.getElementById('c-obs').value=a.obs||'';document.getElementById('c-atrib').value=a.atrib||TODAY;
+          document.getElementById('c-desativ').value=a.desativ||TODAY;
+          document.getElementById('field-desativ').style.display=a.status==='desativada'?'block':'none';
+          formOps=[...a.ops];
         } else {
-          ['c-num','c-cartao','c-titular'].forEach(id=>document.getElementById(id).value='');
-          document.getElementById('c-moeda').value = 'BRL';
-          document.getElementById('c-atrib').value  = TODAY;
-          document.getElementById('c-desativ').value = TODAY;
-          document.getElementById('field-desativ').style.display = 'none';
-          formOps = [];
+          ['c-num','c-cartao','c-titular','c-obs'].forEach(i=>document.getElementById(i).value='');
+          document.getElementById('c-moeda').value='BRL';document.getElementById('c-atrib').value=TODAY;document.getElementById('c-desativ').value=TODAY;
+          document.getElementById('field-desativ').style.display='none';formOps=[];
         }
         renderFormOps();
       }
     }
     document.getElementById('modal-'+type).classList.add('show');
   }
-  function closeModal(type) { document.getElementById('modal-'+type).classList.remove('show'); }
-
-  function renderFormOps() {
-    document.getElementById('conta-ops-tags').innerHTML = formOps.map(o=>`
-      <span class="op-tag">${o}<button onclick="removeFormOp('${o}')">&times;</button></span>`).join('');
+  function closeModal(type){document.getElementById('modal-'+type).classList.remove('show');}
+  function renderFormOps(){document.getElementById('conta-ops-tags').innerHTML=formOps.map(o=>`<span class="op-tag">${o}<button onclick="removeFormOp('${o}')">&times;</button></span>`).join('');}
+  function addOpToForm(){const v=document.getElementById('c-op-sel').value;if(v&&!formOps.includes(v)){formOps.push(v);renderFormOps();}}
+  function removeFormOp(o){formOps=formOps.filter(x=>x!==o);renderFormOps();}
+  function saveOp(){const n=document.getElementById('op-nome').value.trim();if(!n)return;if(!ops.includes(n))ops.push(n);document.getElementById('op-nome').value='';closeModal('op');save();renderAll();}
+  function saveConta(){
+    const num=document.getElementById('c-num').value.trim();if(!num)return;
+    const moeda=document.getElementById('c-moeda').value,cartao=document.getElementById('c-cartao').value.trim(),titular=document.getElementById('c-titular').value.trim(),obs=document.getElementById('c-obs').value.trim();
+    const status=document.getElementById('c-status').value,atrib=document.getElementById('c-atrib').value||TODAY;
+    const desativ=status==='desativada'?(document.getElementById('c-desativ').value||TODAY):null;
+    const opsVal=formOps.length?[...formOps]:(ops.length?[ops[0]]:[]);
+    if(editingId){const idx=accounts.findIndex(x=>x.id===editingId);accounts[idx]={...accounts[idx],num,moeda,cartao,titular,obs,status,atrib,desativ,ops:opsVal};}
+    else accounts.push({id:Date.now(),num,moeda,cartao,titular,obs,status,atrib,desativ,ops:opsVal});
+    closeModal('conta');save();renderAll();
   }
-  function addOpToForm() {
-    const v=document.getElementById('c-op-sel').value;
-    if(v&&!formOps.includes(v)){ formOps.push(v); renderFormOps(); }
-  }
-  function removeFormOp(o) { formOps=formOps.filter(x=>x!==o); renderFormOps(); }
-
-  function saveOp() {
-    const n=document.getElementById('op-nome').value.trim();
-    if(!n) return;
-    if(!ops.includes(n)) ops.push(n);
-    document.getElementById('op-nome').value='';
-    closeModal('op'); save(); renderAll();
-  }
-  function saveConta() {
-    const num     = document.getElementById('c-num').value.trim();
-    const moeda   = document.getElementById('c-moeda').value;
-    const cartao  = document.getElementById('c-cartao').value.trim();
-    const titular = document.getElementById('c-titular').value.trim();
-    const status  = document.getElementById('c-status').value;
-    const atrib   = document.getElementById('c-atrib').value||TODAY;
-    const desativ = status==='desativada' ? (document.getElementById('c-desativ').value||TODAY) : null;
-    if(!num) return;
-    const opsVal = formOps.length ? [...formOps] : (ops.length?[ops[0]]:[]);
-    if(editingId) {
-      const idx = accounts.findIndex(x=>x.id===editingId);
-      accounts[idx] = {...accounts[idx], num, moeda, cartao, titular, status, atrib, desativ, ops:opsVal};
-    } else {
-      accounts.push({id:Date.now(), num, moeda, cartao, titular, status, atrib, desativ, ops:opsVal});
-    }
-    closeModal('conta'); save(); renderAll();
-  }
-
-  function openDetail(id) {
-    const a=accounts.find(x=>x.id===id);
-    detailId=id;
-    document.getElementById('detail-title').textContent = 'Conta '+a.num;
-    document.getElementById('detail-body').innerHTML = `
+  function openDetail(id){
+    const a=accounts.find(x=>x.id===id);detailId=id;
+    document.getElementById('detail-title').textContent='Conta '+a.num;
+    document.getElementById('detail-body').innerHTML=`
       <div class="detail-row"><span class="detail-key">Nº da conta</span><span class="detail-val" style="font-family:var(--mono);font-size:12px;">${a.num}</span></div>
       <div class="detail-row"><span class="detail-key">Status</span><span class="detail-val">${bStatus(a.status)}</span></div>
+      ${a.obs?`<div class="detail-row" style="flex-direction:column;align-items:flex-start;gap:6px;"><span class="detail-key">Observação</span><div class="obs-box">${a.obs}</div></div>`:''}
       <div class="detail-row"><span class="detail-key">Operações</span><span class="detail-val">${a.ops.join(', ')}</span></div>
       <div class="detail-row"><span class="detail-key">Moeda</span><span class="detail-val">${bMoeda(a.moeda)}</span></div>
       <div class="detail-row"><span class="detail-key">Final do cartão</span><span class="detail-val">${a.cartao?'•••• '+a.cartao:'—'}</span></div>
-      <div class="detail-row"><span class="detail-key">Titular do cartão</span><span class="detail-val">${a.titular||'—'}</span></div>
+      <div class="detail-row"><span class="detail-key">Titular</span><span class="detail-val">${a.titular||'—'}</span></div>
       <div class="detail-row"><span class="detail-key">Data de atribuição</span><span class="detail-val">${fmtDate(a.atrib)}</span></div>
       ${a.status==='desativada'?`<div class="detail-row"><span class="detail-key">Data de desativação</span><span class="detail-val">${fmtDate(a.desativ)}</span></div>`:''}
-      <div class="detail-row"><span class="detail-key">Dias ativos</span><span class="detail-val">${diasAtivos(a)} dias</span></div>
-    `;
+      <div class="detail-row"><span class="detail-key">Dias ativos</span><span class="detail-val">${diasAtivos(a)} dias</span></div>`;
     openModal('detail');
   }
-  function editFromDetail() { closeModal('detail'); openModal('conta', detailId); }
-
-  function renderAll() { renderMetrics(); renderOpView(); renderContaView(); }
+  function editFromDetail(){closeModal('detail');openModal('conta',detailId);}
+  function confirmDelete(id){deleteTargetId=id;closeModal('detail');document.getElementById('confirm-overlay').classList.add('show');}
+  function closeConfirm(){document.getElementById('confirm-overlay').classList.remove('show');}
+  function deleteConfirmed(){accounts=accounts.filter(x=>x.id!==deleteTargetId);closeConfirm();save();renderAll();}
+  function renderAll(){renderMetrics();renderVisao();renderContasView();buildStatusChecks();}
 
   load();
   renderAll();
